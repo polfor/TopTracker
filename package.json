@@ -26,6 +26,7 @@
         "gsap": "^3.12.2",
         "husky": "^8.0.0",
         "lint-staged": "^15.1.0",
+        "mongoose": "^8.0.3",
         "nuxt": "^3.8.2",
         "postcss": "^8.4.31",
         "prettier": "^3.1.0",
@@ -33,7 +34,7 @@
         "vitest": "^0.34.6",
         "vue": "^3.3.8",
         "vue-router": "^4.2.5",
-        "mongoose": "^8.0.3"
+        "dotenv": "^16.3.1"
     },
     "lint-staged": {
         "**/*.{js,ts,vue}": [
