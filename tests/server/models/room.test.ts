@@ -54,7 +54,7 @@ test("should save room to database", async ({ expect }) => {
 
 	const foundRoom = await Room.findById(room.id);
 	expect(foundRoom).not.toBeNull();
-	expect(foundRoom.name).toBe("Test Room");
+	expect(foundRoom?.name).toBe("Test Room");
 });
 
 test("should update room in database", async ({ expect }) => {
@@ -94,7 +94,7 @@ test("should update room in database", async ({ expect }) => {
 
 	const updatedRoom = await Room.findById(room.id);
 	expect(updatedRoom).not.toBeNull();
-	expect(updatedRoom.name).toBe("Updated Room");
+	expect(updatedRoom?.name).toBe("Updated Room");
 });
 
 // Add more tests as needed...
