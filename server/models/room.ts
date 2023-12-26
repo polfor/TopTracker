@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const roomSchema = new Schema({
 	name: String,
-	id: String,
+	roomCode: String,
 	users: [
 		{
 			spotifyId: String,
@@ -13,17 +13,19 @@ const roomSchema = new Schema({
 				height: Number,
 				width: Number
 			},
-			topTracks: {
-				name: String,
-				artist: String,
-				images: [
-					{
-						url: String,
-						height: Number,
-						width: Number
-					}
-				]
-			}
+			topTracks: [
+				{
+					name: String,
+					artist: String,
+					images: [
+						{
+							url: String,
+							height: Number,
+							width: Number
+						}
+					]
+				}
+			]
 		}
 	]
 });
