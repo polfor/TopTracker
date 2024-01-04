@@ -2,11 +2,15 @@ version: '3.1'
 
 services:
 
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+  mongodb:
+    image: mongo:latest
     ports:
-      - ${MONGO_HOST_PORT}:27017
+      - ${MONGO_PORT}:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=toptracker
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+    volumes:
+      - ./docker/mongodb/scripts:/docker-entrypoint-initdb.d/
