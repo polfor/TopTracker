@@ -15,7 +15,11 @@ export default defineNuxtConfig({
 		}
 	},
 	runtimeConfig: {
-		mongoUrl: `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/toptracker`
+		mongoUrl: `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/toptracker`,
+		public: {
+			spotifyClientId: "",
+			spotifyClientSecret: ""
+		}
 	},
 	nitro: {
 		plugins: ["~/server/index.ts"]
