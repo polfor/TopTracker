@@ -1,35 +1,42 @@
 module.exports = {
+	root: true,
 	env: {
 		browser: true,
-		es2021: true,
 		node: true
 	},
-	extends: [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:vue/vue3-essential"
-	],
-	overrides: [
-		{
-			env: {
-				node: true
-			},
-			files: [".eslintrc.{js,cjs}"],
-			parserOptions: {
-				sourceType: "script"
-			}
-		}
-	],
 	parserOptions: {
-		ecmaVersion: "latest",
 		parser: "@typescript-eslint/parser",
+		ecmaVersion: 2020,
 		sourceType: "module"
 	},
-	plugins: ["@typescript-eslint", "vue"],
+	extends: [
+		"@nuxt",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:vue/vue3-recommended",
+		"prettier"
+	],
+	plugins: ["vue", "@typescript-eslint"],
 	rules: {
-		indent: ["error", "tab"],
-		"linebreak-style": ["error", "unix"],
+		semi: ["error", "always"],
 		quotes: ["error", "double"],
-		semi: ["error", "always"]
-	}
+		"comma-dangle": ["error", "never"],
+		"arrow-parens": ["error", "as-needed"],
+		"linebreak-style": ["error", "unix"],
+		"no-tabs": "off",
+		indent: "off",
+		"@typescript-eslint/indent": ["error", "tab"],
+		"vue/html-closing-bracket-newline": ["error", { multiline: "never" }],
+		"vue/html-indent": ["error", "tab"],
+		"vue/script-indent": ["error", "tab", { baseIndent: 1 }],
+		"vue/html-closing-bracket-spacing": "error"
+	},
+	overrides: [
+		{
+			files: ["*.vue"],
+			rules: {
+				indent: "off",
+				"@typescript-eslint/indent": "off"
+			}
+		}
+	]
 };
