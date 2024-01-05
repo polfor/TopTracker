@@ -5,5 +5,5 @@ export default defineEventHandler(async event => {
 
 	const rooms = await Room.find({ "users.spotifyId": spotifyId });
 
-	return rooms;
+	return { rooms: rooms };
 });
