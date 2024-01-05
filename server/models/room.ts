@@ -2,12 +2,24 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const roomSchema = new Schema({
-	name: String,
-	roomCode: String,
+	name: {
+		type: String,
+		required: true
+	},
+	roomCode: {
+		type: String,
+		required: true
+	},
 	users: [
 		{
-			spotifyId: String,
-			name: String,
+			spotifyId: {
+				type: String,
+				required: true
+			},
+			name: {
+				type: String,
+				required: true
+			},
 			image: {
 				url: String,
 				height: Number,
