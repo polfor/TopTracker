@@ -15,6 +15,7 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		mongoUrl: `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/toptracker`,
+		jwtSecret: "",
 		public: {
 			spotifyClientId: "",
 			spotifyClientSecret: ""
