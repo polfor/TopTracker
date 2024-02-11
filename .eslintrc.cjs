@@ -37,6 +37,12 @@ module.exports = {
 				indent: "off",
 				"@typescript-eslint/indent": "off"
 			}
+		},
+		{
+			files: ["pages/**/*.vue"],
+			rules: {
+				"vue/multi-word-component-names": "off"
+			}
 		}
 	]
 };
