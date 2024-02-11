@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<LoginComponent />
+		<NuxtPage />
 	</div>
 </template>
 
