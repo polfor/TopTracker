@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+
 export default async function () {
 	function signToken(payload: object) {
 		const config = useRuntimeConfig();

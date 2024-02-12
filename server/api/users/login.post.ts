@@ -52,7 +52,8 @@ export default defineEventHandler(async event => {
 		}
 
 		const token = signToken({ spotifyId });
-		console.log("token: ", token);
+		setResponseStatus(event, 200);
+		return { token: token };
 	} catch (error) {
 		console.log("error: ", error);
 		setResponseStatus(event, 500);

@@ -1,7 +1,15 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+import mongoose, { Document, Schema } from "mongoose";
 
-const userSchema = new Schema({
+interface IUser {
+	spotifyId: string;
+	accessToken: string;
+	refreshToken: string;
+	expiresAt: Date;
+}
+
+interface UserModelInterface extends IUser, Document {}
+
+const userSchema = new Schema<UserModelInterface>({
 	spotifyId: {
 		type: String,
 		required: true,
@@ -21,4 +29,4 @@ const userSchema = new Schema({
 	}
 });
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model<UserModelInterface>("User", userSchema);

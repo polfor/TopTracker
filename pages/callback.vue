@@ -5,6 +5,11 @@
 			@click="sendBack">
 			Send to back
 		</button>
+		<button
+			class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-full transition-colors"
+			@click="getInfo">
+			Get info
+		</button>
 	</div>
 </template>
 
@@ -15,15 +20,40 @@
 
 	const verifier = useCookie("code_verifier");
 
+	const tokenCookie = useCookie("token", {
+		sameSite: true,
+		httpOnly: true
+	});
+
 	async function sendBack() {
 		if (route.query.state === state.value) {
-			await useFetch("/api/user/login", {
+			const { token } = await $fetch("/api/users/login", {
 				method: "POST",
 				body: JSON.stringify({
 					code: route.query.code,
 					verifier: verifier.value
 				})
 			});
+
+			if (token) {
+				tokenCookie.value = token;
+			}
+		}
+	}
+
+	async function getInfo() {
+		try {
+			console.log(tokenCookie.value);
+			const { data } = await $fetch("/api/users/info", {
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${tokenCookie.value}`
+				}
+			});
+
+			console.log(data);
+		} catch (error: unknown) {
+			console.error(error);
 		}
 	}
 </script>
